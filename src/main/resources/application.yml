@@ -1,0 +1,80 @@
+spring:
+  # \u6570\u636E\u5E93
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://39.100.119.221:3306/seckill?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serveTimezone=Asia/Shanghai
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      pool-name: DataHikariCP
+      minimum-idle: 5
+      idle-timeout: 1800000
+      maximum-pool-size: 10
+      max-lifetime: 1800000
+      auto-commit: true
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  # Redis
+  redis:
+    timeout: 30000
+    host: 39.100.119.221
+    port: 6379
+    database: 1
+    password: 123456
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 10000
+        max-idle: 200
+        min-idle: 5
+
+  # Rabbitmq
+  rabbitmq:
+    password: 123456
+    username: root
+    host: 39.100.119.221
+    port: 5672
+    virtual-host: /
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+        prefetch: 1
+        auto-startup: true
+        default-requeue-rejected: true
+        retry:
+          enabled: true
+          initial-interval: 1000
+          max-attempts: 3
+          max-interval: 10000
+          multiplier: 1.0
+
+
+
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  type-aliases-package: com.xxxx.seckill.pojo
+
+logging:
+  level:
+    com.xxxx.seckill.mapper: debug
+    com.xxxx.seckill.service.impl: debug
+
+jwt:
+  # jwt\u52A0\u5BC6\u79C1\u94A5
+  encrypt-jwtKey: WERQDSFAsdfad10323
+  # AccessToken\u6709\u6548\u65F6\u95F4 5\u5206\u949F
+  accessToken-expireTime: 1800
+  # RefreshToken\u6709\u6548\u65F6\u95F4 30\u5206\u949F
+  refreshToken-expireTime: 3600
+
+
+server:
+  servlet:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
