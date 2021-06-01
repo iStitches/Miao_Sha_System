@@ -21,7 +21,7 @@
 
 ## 项目流程
 
-![image-20210601183243578](../passageImg/README.assets/image-20210601183243578.png)
+![image-20210601183243578](passageImg/image-20210601183243578.png)
 
 ## 项目特色
 
